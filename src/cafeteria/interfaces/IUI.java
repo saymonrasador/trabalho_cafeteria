@@ -1,3 +1,5 @@
+package cafeteria.interfaces;
+
 public interface IUI {
     void mostrarMensagem(String mensagem);
     String obterEntrada(String prompt);

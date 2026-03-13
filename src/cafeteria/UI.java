@@ -1,3 +1,9 @@
+package cafeteria;
+
+import cafeteria.interfaces.IUI;
+import cafeteria.interfaces.IPedido;
+import java.util.Scanner;
+
 public class UI implements IUI {
     public void mostrarMensagem(String mensagem) {
         System.out.println(mensagem);

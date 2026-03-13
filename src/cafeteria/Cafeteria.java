@@ -5,8 +5,8 @@ import java.io.IOException;
 
 // Deveria ter uma classe Pedido, Bebida e Cliente, usando interfaces para definir os comportamentos (Interface Segregation Principle (ISP))
 
-public class Cafeteria { // Não está usando interface
-	public void processarPedido(String tipoBebida, int quantidade, String tipoCliente) {
+public class Cafeteria implements ICafeteria{
+	public void processarPedido(IBebida bebida, int quantidade, ICliente cliente) {
 		double precoBase = 0;
 
 		// Deveria existir uma classe Bebida e cada tipo de bebida deveria ser uma
@@ -55,9 +55,21 @@ public class Cafeteria { // Não está usando interface
 		}
 	}
 
+	public void salvarPedido(IPedido pedido) {
+		try {
+			FileWriter writer = new FileWriter("log_pedidos.txt", true);
+			writer.write("Pedido: " + pedido.getBebida().getNome() + " | Total: " + pedido.getTotal() + "\n");
+			writer.close();
+			System.out.println("Pedido salvo no arquivo com sucesso.");
+		} catch (IOException e) {
+			System.out.println("Erro crítico no sistema de arquivos!");
+		}
+	}
+
 	public static void main(String[] args) {
 		Cafeteria sistema = new Cafeteria();
 		// Simulação de uso
-		sistema.processarPedido("Capuccino", 2, "Professor");
+		sistema.processarPedido(new Cha(), 2, new Cliente("Marcos"));
+		sistema.processarPedido(new Capuccino(), 1, new Professor("Dr. Silva"));
 	}
 }

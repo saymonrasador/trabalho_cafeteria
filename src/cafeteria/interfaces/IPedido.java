@@ -3,4 +3,5 @@ public interface IPedido {
     public int getQuantidade();
     public ICliente getCliente();
     public float getTotal();
+    private double calcularTotal();
 }

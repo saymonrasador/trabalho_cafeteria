@@ -1,0 +1,3 @@
+public interface IArquivo {
+    void salvarPedido(IPedido pedido);
+}

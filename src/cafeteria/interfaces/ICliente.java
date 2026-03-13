@@ -1,4 +1,6 @@
+package cafeteria.interfaces;
+
 public interface ICliente {
     public String getNome();
-    public float getDesconto();
+    public double aplicarDesconto(double valorOriginal);
 }

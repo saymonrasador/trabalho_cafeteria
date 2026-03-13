@@ -1,3 +1,9 @@
+package cafeteria;
+
+import cafeteria.interfaces.IBebida;
+import cafeteria.interfaces.ICliente;
+import cafeteria.interfaces.IPedido;
+
 public class Pedido implements IPedido {
     private IBebida bebida;
     private int quantidade;
@@ -13,10 +19,7 @@ public class Pedido implements IPedido {
 
     private double calcularTotal() {
         double precoBase = bebida.getPreco() * quantidade;
-        if (cliente.getDesconto() > 0) {
-            precoBase *= (1 - cliente.getDesconto());
-        }
-        return precoBase;
+        return cliente.aplicarDesconto(precoBase);
     }
 
     public IBebida getBebida() {

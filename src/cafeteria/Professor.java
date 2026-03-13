@@ -1,17 +1,20 @@
+package cafeteria;
+
+import cafeteria.interfaces.ICliente;
+
 public class Professor implements ICliente {
     private String nome;
-    private float desconto;
+    private static final double DESCONTO = 0.2f;
 
     public Professor(String nome) {
         this.nome = nome;
-        this.desconto = 0.2f;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public float getDesconto() {
-        return desconto;
+    public double aplicarDesconto(double valorOriginal) {
+        return valorOriginal * (1 - DESCONTO);
     }
 }
